@@ -18,10 +18,10 @@ var appRouter = function (app) {
 
     app.get("/configure", function(req,res) {
         var hostname = os.hostname();
-        var databaseConn = "Default";
-        var msgBroker = "Default";
-        var hello = "Default";
-        var love = "Default";
+        var databaseConn = (process.env.DBCONN || "Default");
+        var msgBroker = (process.env.MSGBROKER || "Default");
+        var hello = (process.env.GREETING || "Default");
+        var love = (process.env.LOVE || "Default");
         var config = "Configuration for: " + hostname + "\ndatabaseConn=" + databaseConn + "\nmsgBroker=" + msgBroker + "\nhello=" + hello + "\nlove=" + love;
         res.status(200).send(config);
     })
